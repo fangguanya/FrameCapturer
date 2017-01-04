@@ -1,4 +1,5 @@
 #include "FrameCaptureTexturePool.h"
+#include "Engine/TextureRenderTarget2D.h"
 
 FFrameCapturePooledTexture2DItem::FFrameCapturePooledTexture2DItem(uint32 Width, uint32 Height)
 {

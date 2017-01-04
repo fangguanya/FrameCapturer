@@ -1,6 +1,8 @@
 #include "FrameCapturer.h"
 #include "SceneViewport.h"
 #include "UnrealTemplate.h"
+#include "ScreenRendering.h"
+#include "Widgets/SViewport.h"
 
 FViewportReader::FViewportReader(EPixelFormat InPixelFormat, FIntPoint InBufferSize, bool bInReadBack, const FTexture2DRHIRef& InProvidedRenderTarget)
 {
@@ -126,7 +128,7 @@ class FSceneViewport* Viewport,
 	TSharedPtr<SViewport> ViewportWidget = Viewport->GetViewportWidget().Pin();
 	if (ViewportWidget.IsValid())
 	{
-		TSharedPtr<SWindow> Window = FSlateApplication::Get().FindWidgetWindow(ViewportWidget.ToSharedRef());
+		TSharedPtr<SWindow> Window = FSlateApplication::Get().FindWidgetWindow(ViewportWidget->AsShared());
 		if (Window.IsValid())
 		{
 			CaptureWindow = Window;
